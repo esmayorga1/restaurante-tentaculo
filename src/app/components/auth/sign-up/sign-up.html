@@ -1,1 +1,71 @@
-<p>sign-up works!</p>
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-tr from-blue-900 via-cyan-800 to-emerald-600">
+  <div class="bg-white/90 backdrop-blur-xl p-8 rounded-2xl shadow-2xl w-96 border border-cyan-300">
+    
+    <!-- Logo -->
+    <div class="flex justify-center mb-6">
+      <img src="img/logo3.png" alt="Logo" class="h-28 drop-shadow-lg">
+    </div>
+
+    <!-- Título -->
+    <h2 class="text-center text-xl font-semibold text-gray-800 mb-6">Crear Cuenta</h2>
+
+    <!-- Formulario Reactivo -->
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+      <!-- Correo Electrónico -->
+      <div class="mb-4">
+        <label class="block text-gray-800 font-semibold mb-2">Correo Electrónico</label>
+        <input type="email" formControlName="email" placeholder="Ingresa tu correo"
+               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 transition">
+        <small *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched"
+               class="text-red-600">Ingresa un correo válido</small>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="mb-4">
+        <label class="block text-gray-800 font-semibold mb-2">Contraseña</label>
+        <div class="relative">
+          <input [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Ingresa tu contraseña"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 pr-10 transition">
+          <button type="button" (click)="togglePasswordVisibility()"
+                  class="absolute inset-y-0 right-3 flex items-center">
+            <img [src]="showPassword ? 'img/ojo.png' : 'img/invisible.png'"
+                 alt="Ver contraseña" class="w-5 h-5 opacity-70 hover:opacity-100 transition">
+          </button>
+        </div>
+        <small *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched"
+               class="text-red-600">La contraseña debe tener al menos 6 caracteres</small>
+      </div>
+
+      <!-- Repetir Contraseña -->
+      <div class="mb-4">
+        <label class="block text-gray-800 font-semibold mb-2">Repetir Contraseña</label>
+        <div class="relative">
+          <input [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirmPassword" placeholder="Repite tu contraseña"
+                 class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-600 focus:border-emerald-600 pr-10 transition">
+          <button type="button" (click)="toggleConfirmPasswordVisibility()"
+                  class="absolute inset-y-0 right-3 flex items-center">
+            <img [src]="showConfirmPassword ? 'img/ojo.png' : 'img/invisible.png'"
+                 alt="Ver contraseña" class="w-5 h-5 opacity-70 hover:opacity-100 transition">
+          </button>
+        </div>
+        <small *ngIf="registerForm.controls.confirmPassword.invalid && registerForm.controls.confirmPassword.touched"
+               class="text-red-600">Las contraseñas deben coincidir</small>
+      </div>
+
+      <!-- Botón de registro -->
+      <button type="submit" [disabled]="registerForm.invalid"
+              class="w-full bg-gradient-to-r from-cyan-700 to-emerald-600 text-white font-semibold py-2 rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition">
+        Registrarse
+      </button>
+
+      <!-- Enlaces adicionales -->
+      <div class="mt-4 text-center">
+        <p class="text-gray-800">¿Ya tienes una cuenta?
+          <a routerLink="/iniciar-sesion" class="text-emerald-600 font-medium hover:underline">Inicia sesión</a>
+        </p>
+      </div>
+
+    </form>
+  </div>
+</div>

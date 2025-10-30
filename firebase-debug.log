@@ -35,3 +35,37 @@ You're about to initialize a Firebase project in this directory:
     at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2025-10-22T23:40:35.168Z] ----------------------------------------------------------------------
+[debug] [2025-10-22T23:40:35.172Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2025-10-22T23:40:35.172Z] CLI Version:   14.3.1
+[debug] [2025-10-22T23:40:35.172Z] Platform:      win32
+[debug] [2025-10-22T23:40:35.172Z] Node Version:  v22.16.0
+[debug] [2025-10-22T23:40:35.173Z] Time:          Wed Oct 22 2025 18:40:35 GMT-0500 (hora estándar de Colombia)
+[debug] [2025-10-22T23:40:35.173Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-10-22T23:40:35.183Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-10-22T23:40:35.184Z] > authorizing via signed-in user (mayorga.sebas100@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\005investigaciones\restauranteTentaculo\restauranteTentaculo
+
+[debug] [2025-10-23T00:38:50.220Z] ExitPromptError: User force closed the prompt with SIGINT
+    at Interface.sigint (C:\Users\admin\AppData\Roaming\npm\node_modules\firebase-tools\node_modules\@inquirer\core\dist\commonjs\lib\create-prompt.js:100:37)
+    at Interface.emit (node:events:518:28)
+    at Interface.emit (node:domain:489:12)
+    at [_ttyWrite] [as _ttyWrite] (node:internal/readline/interface:1128:18)
+    at ReadStream.onkeypress (node:internal/readline/interface:267:20)
+    at ReadStream.emit (node:events:530:35)
+    at ReadStream.emit (node:domain:489:12)
+    at emitKeys (node:internal/readline/utils:370:14)
+    at emitKeys.next (<anonymous>)
+    at ReadStream.onData (node:internal/readline/emitKeypressEvents:64:36)
+[error] 
+[error] Error: An unexpected error has occurred.
