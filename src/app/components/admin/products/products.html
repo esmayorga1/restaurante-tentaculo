@@ -1,1 +1,67 @@
-<p>products works!</p>
+<div class="container mx-auto p-6 bg-gradient-to-r from-gray-100 to-white rounded-lg shadow-2xl">
+    <h1 class="text-3xl font-extrabold mb-6 text-center text-gray-800">Gestión de Productos Restaurante Tentaculo</h1>
+
+    <!-- Filtro y buscador -->
+    <div class="flex flex-col sm:flex-row justify-between items-center mb-6 space-y-4 sm:space-y-0 sm:space-x-4">
+        <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-4 w-full sm:w-auto">
+            <input type="text" placeholder="Buscar productos..." [(ngModel)]="searchTerm"
+                class="w-full sm:w-64 border border-gray-400 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"/>
+            <select [(ngModel)]="selectedCategory"
+                class="w-full sm:w-64 border border-gray-400 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">
+                <option value="">Filtrar por categoría</option>
+                <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+            </select>        
+        </div>
+
+        <button (click)="openAddProductModal()"
+            class="w-full sm:w-auto bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition duration-200">
+            Añadir Producto
+        </button>
+    </div>
+
+    <!-- Tabla de productos -->
+    <div class="overflow-x-auto rounded-lg shadow-lg">
+        <table class="min-w-full bg-white text-sm sm:text-base rounded-lg border border-gray-300">
+            <thead class="bg-gray-300 text-gray-700">
+                <tr>
+                    <th class="py-3 px-4 border-b text-left">Nombre</th>
+                    <th class="py-3 px-4 border-b text-left">Precio Compra</th>
+                    <th class="py-3 px-4 border-b text-left">Precio Venta</th>
+                    <th class="py-3 px-4 border-b text-left">Categoría</th>
+                    <th class="py-3 px-4 border-b text-left">Marca</th>
+                    <th class="py-3 px-4 border-b text-left">Proveedor</th>
+                    <th class="py-3 px-4 border-b text-left">Stock</th>
+                    <th class="py-3 px-4 border-b text-left">Descripción</th>
+                    <th class="py-3 px-4 border-b text-left">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of filteredProducts()" class="hover:bg-gray-50">
+                    <td class="py-2 px-4 border-b">{{ product.name }}</td>
+                    <td class="py-2 px-4 border-b">{{ product.purchasePrice | currency }}</td>
+                    <td class="py-2 px-4 border-b">{{ product.salePrice | currency }}</td>
+                    <td class="py-2 px-4 border-b">{{ product.category }}</td>
+                    <td class="py-2 px-4 border-b">{{ product.brand }}</td>
+                    <td class="py-2 px-4 border-b">{{ product.supplier }}</td>
+                    <td class="py-2 px-4 border-b">{{ product.stockQuantity }}</td>
+                    <td class="py-2 px-4 border-b">{{ product.description }}</td>
+                    <td class="py-2 px-4 border-b flex space-x-2 justify-center">
+                        <button (click)="editProduct(product)" class="text-yellow-600 hover:text-yellow-800 transition duration-200">
+                            <i class="fas fa-edit text-xl"></i>
+                        </button>
+                        <button (click)="deleteProduct(product.id)" class="text-red-600 hover:text-red-800 transition duration-200">
+                            <i class="fas fa-trash-alt text-xl"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="filteredProducts().length === 0">
+                    <td colspan="9" class="py-2 px-4 border-b text-center text-gray-500">No se encontraron productos.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modales -->
+    <app-products-add></app-products-add>
+    <app-products-edit></app-products-edit>
+</div>

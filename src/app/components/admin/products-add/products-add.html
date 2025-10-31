@@ -1,1 +1,141 @@
-<p>products-add works!</p>
+<!-- add-product.component.html -->
+<div *ngIf="isOpen" class="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="modal-content bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-11/12 max-w-md">
+        <span (click)="close()" class="close cursor-pointer text-gray-700 hover:text-gray-900 float-right text-2xl">&times;</span>
+        
+        <h1 class="text-2xl font-bold mb-6 text-center">Agregar Producto</h1>
+
+        <form (ngSubmit)="addProduct()">
+            <!-- Nombre del Producto -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Nombre del Producto
+                </label>
+                <input
+                    type="text"
+                    id="name"
+                    [(ngModel)]="product.name"
+                    name="name"
+                    placeholder="Ingresa el nombre del producto"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Precio de Compra -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="purchasePrice">
+                    Precio de Compra
+                </label>
+                <input
+                    type="number"
+                    id="purchasePrice"
+                    [(ngModel)]="product.purchasePrice"
+                    name="purchasePrice"
+                    placeholder="Ingresa el precio de compra"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Precio de Venta -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="salePrice">
+                    Precio de Venta
+                </label>
+                <input
+                    type="number"
+                    id="salePrice"
+                    [(ngModel)]="product.salePrice"
+                    name="salePrice"
+                    placeholder="Ingresa el precio de venta"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Cantidad en Stock -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="stockQuantity">
+                    Cantidad en Stock
+                </label>
+                <input
+                    type="number"
+                    id="stockQuantity"
+                    [(ngModel)]="product.stockQuantity"
+                    name="stockQuantity"
+                    placeholder="Ingresa la cantidad en stock"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Categoría -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="category">
+                    Categoría
+                </label>
+                <input
+                    type="text"
+                    id="category"
+                    [(ngModel)]="product.category"
+                    name="category"
+                    placeholder="Ingresa el nombre de la categoría"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Marca -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="brand">
+                    Marca
+                </label>
+                <input
+                    type="text"
+                    id="brand"
+                    [(ngModel)]="product.brand"
+                    name="brand"
+                    placeholder="Ingresa la marca del producto"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Proveedor -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="supplier">
+                    Proveedor
+                </label>
+                <input
+                    type="text"
+                    id="supplier"
+                    [(ngModel)]="product.supplier"
+                    name="supplier"
+                    placeholder="Ingresa el proveedor del producto"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                />
+            </div>
+
+            <!-- Descripción -->
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="description">
+                    Descripción
+                </label>
+                <textarea
+                    id="description"
+                    [(ngModel)]="product.description"
+                    name="description"
+                    placeholder="Ingresa una descripción del producto"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    rows="3"
+                ></textarea>
+            </div>
+
+            <!-- Botón de Enviar -->
+            <div class="flex items-center justify-between">
+                <button
+                    type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                >
+                    Agregar Producto
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
