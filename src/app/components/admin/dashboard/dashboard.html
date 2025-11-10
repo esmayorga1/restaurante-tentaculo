@@ -1,1 +1,93 @@
-<p>dashboard works!</p>
+<section class="text-gray-600 body-font h-screen bg-gray-100">
+  <!-- Contenedor principal -->
+  <div class="container mx-auto py-12">
+    <!-- Título principal del Dashboard -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-semibold text-gray-800">Restaurante Tentaculo</h1>
+      <p class="text-lg text-gray-600">Visión general de los productos y ventas</p>
+    </div>
+
+    <!-- Tarjetas de información -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Total de productos registrados -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+        <h3 class="text-xl font-medium text-gray-700">Total Productos Registrados</h3>
+        <div class="mt-4 text-4xl font-semibold text-indigo-600">{{ totalProducts }}</div>
+      </div>
+      
+      <!-- Productos con stock menor a 10 unidades -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+        <h3 class="text-xl font-medium text-gray-700">Productos con Stock Bajo</h3>
+        <div class="mt-4 text-4xl font-semibold text-red-500">{{ lowStockProducts }}</div>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">    
+        <h3 class="text-xl font-medium text-gray-700">Lista de Productos con Stock Bajo</h3>
+        <ul class="mt-4 text-sm text-gray-700">
+          <li *ngFor="let product of lowStockProductsList" class="flex justify-between py-2">
+            <span>{{ product.data.name }}</span>
+            <!-- <span class="font-semibold text-indigo-600">{{ product.sales }}</span> -->
+          </li>
+        </ul>
+      </div>
+      
+      <!-- 5 productos más vendidos -->
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+        <h3 class="text-xl font-medium text-gray-700">5 Productos Más Vendidos</h3>
+        <ul class="mt-4 text-sm text-gray-700">
+          <li *ngFor="let product of top5Products" class="flex justify-between py-2">
+            <span>{{ product.name }}</span>
+            <span class="font-semibold text-indigo-600">{{ product.sales }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Total de productos registrados -->
+
+    
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+        <h3 class="text-xl font-medium text-gray-700">5 Productos Menos vendidos</h3>
+        <ul class="mt-4 text-sm text-gray-700">
+          <li *ngFor="let product of bottom5Products" class="flex justify-between py-2">
+            <span>{{ product.name }}</span>
+            <span class="font-semibold text-indigo-600">{{ product.sales }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+        <h3 class="text-xl font-medium text-gray-700">Total Ventas Registradas</h3>
+        <div class="mt-4 text-4xl font-semibold text-indigo-600">{{ totalVentas }}</div>
+    </div>
+        
+  
+
+      <!-- 5 productos más vendidos -->
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <!-- Sección de gráficos o más datos -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</section>
+
+

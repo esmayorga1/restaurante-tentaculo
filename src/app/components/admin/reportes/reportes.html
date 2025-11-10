@@ -1,0 +1,99 @@
+<div class="container mx-auto p-6 bg-gray-50 rounded-xl shadow-lg">
+    <h2 class="text-3xl font-extrabold text-gray-800 text-center mb-8">Reporte de Ventas</h2>
+
+    <!-- Selección de Rango de Fechas -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+        <div>
+            <label for="startDate" class="block text-sm font-semibold text-gray-700">Fecha de Inicio</label>
+            <input
+                type="date"
+                id="startDate"
+                [(ngModel)]="startDate"
+                name="startDate"
+                class="shadow-lg appearance-none border-2 border-gray-400 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
+            />
+        </div>
+
+        <div>
+            <label for="endDate" class="block text-sm font-semibold text-gray-700">Fecha de Fin</label>
+            <input
+                type="date"
+                id="endDate"
+                [(ngModel)]="endDate"
+                name="endDate"
+                class="shadow-lg appearance-none border-2 border-gray-400 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
+            />
+        </div>
+    </div>
+
+    <div class="text-center mb-6">
+        <button
+            (click)="obtenerVentasPorRango()"
+            class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-300"
+        >
+            Obtener Ganancias por Rango de Fechas
+        </button>
+    </div>
+
+    <!-- Selección de un Día Específico -->
+    <div class="mb-6">
+        <label for="selectedDate" class="block text-sm font-semibold text-gray-700">Fecha Específica</label>
+        <input
+            type="date"
+            id="selectedDate"
+            [(ngModel)]="selectedDate"
+            name="selectedDate"
+            class="shadow-lg appearance-none border-2 border-gray-400 rounded-lg w-full py-3 px-4 text-gray-800 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all duration-300"
+        />
+    </div>
+
+    <div class="text-center mb-8">
+        <button
+            (click)="obtenerVentasPorDia()"
+            class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-lg shadow-lg focus:outline-none focus:ring-4 focus:ring-teal-300 transition-all duration-300"
+        >
+            Obtener Ganancias del Día
+        </button>
+    </div>
+
+    <!-- Mostrar Ganancias Totales Solo Después de la Consulta -->
+    <div *ngIf="gananciasTotales > 0" class="text-center mb-6">
+        <h3 class="text-2xl font-semibold text-green-500">Ganancia Total: ${{ gananciasTotales | number:'1.2-2' }}</h3>
+    </div>
+
+    <!-- Mensaje de "No hay ventas" inicialmente -->
+    <div *ngIf="noVentas" class="text-center py-4 text-gray-400">
+        <p class="text-xl font-semibold">No hay ventas registradas para este período.</p>
+    </div>
+
+    <!-- Mostrar Resumen de Ventas por Producto Solo Después de la Consulta -->
+    <div *ngIf="resumenVentas.length > 0" class="bg-white rounded-lg shadow-lg p-6 mt-6">
+        <h3 class="text-xl font-bold text-gray-800 mb-4">Resumen de Ventas</h3>
+        <table class="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
+            <thead>
+                <tr class="bg-teal-100 text-teal-700">
+                    <th class="py-4 px-6 text-left">Fecha de Venta</th>
+                    <th class="py-4 px-6 text-left">Producto</th>
+                    <th class="py-4 px-6 text-left">Cantidad</th>
+                    <th class="py-4 px-6 text-left">Precio de Compra</th>
+                    <th class="py-4 px-6 text-left">Precio de Venta</th>
+                    <th class="py-4 px-6 text-left">Ganancia Total</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-700">
+                <tr *ngFor="let producto of resumenVentas">
+                    <td class="py-3 px-6 border-b">{{ producto.date }}</td>
+                    <td class="py-3 px-6 border-b">{{ producto.productName }}</td>
+                    <td class="py-3 px-6 border-b">{{ producto.totalCantidad }}</td>
+                    <td class="py-3 px-6 border-b">${{ producto.purchasePrice | number:'1.2-2' }}</td>
+                    <td class="py-3 px-6 border-b">${{ producto.salePrice | number:'1.2-2' }}</td>
+                    <td class="py-3 px-6 border-b">${{ producto.totalGanancia | number:'1.2-2' }}</td>
+                </tr>
+                <tr class="font-semibold text-teal-800">
+                    <td class="py-3 px-6 border-b" colspan="5">Total Ganancia</td>
+                    <td class="py-3 px-6 border-b">${{ totalGanancia() | number:'1.2-2' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

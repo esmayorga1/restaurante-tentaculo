@@ -1,0 +1,63 @@
+<div *ngIf="isOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-96 relative">
+    <h2 class="text-xl font-bold mb-4 text-center text-gray-700">Registrar Venta</h2>
+
+    <div class="space-y-4">
+      <!-- Producto -->
+      <div>
+        <label for="product" class="block text-gray-600 mb-1">Producto</label>
+        <select
+          id="product"
+          [(ngModel)]="venta.productId"
+          (change)="updateTotal()"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <option value="">Seleccione un producto</option>
+          <option *ngFor="let product of products" [value]="product.id">
+            {{ product.name }}
+          </option>
+        </select>
+      </div>
+
+      <!-- Cantidad -->
+      <div>
+        <label for="quantity" class="block text-gray-600 mb-1">Cantidad</label>
+        <input
+          id="quantity"
+          type="number"
+          min="1"
+          [(ngModel)]="venta.quantity"
+          (input)="updateTotal()"
+          class="w-full border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+      </div>
+
+      <!-- Total -->
+      <div>
+        <label class="block text-gray-600 mb-1">Total</label>
+        <input
+          type="text"
+          [value]="venta.total | currency"
+          readonly
+          class="w-full bg-gray-100 border border-gray-300 rounded-lg p-2 text-gray-700"
+        />
+      </div>
+
+      <!-- Botones -->
+      <div class="flex justify-between mt-4">
+        <button
+          (click)="addVenta()"
+          class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-200"
+        >
+          Guardar
+        </button>
+        <button
+          (click)="closeModal()"
+          class="bg-gray-400 text-white px-4 py-2 rounded-lg hover:bg-gray-500 transition duration-200"
+        >
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
