@@ -1,102 +1,178 @@
 <!-- Botón para abrir el sidebar -->
-<button (click)="toggleSidebar()" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-    <span class="sr-only">Open sidebar</span>
-    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-    </svg>
+<button 
+  (click)="toggleSidebar()" 
+  class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-gray-500 rounded-lg sm:hidden 
+         hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 
+         dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+  <span class="sr-only">Open sidebar</span>
+  <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" 
+       xmlns="http://www.w3.org/2000/svg">
+    <path clip-rule="evenodd" fill-rule="evenodd" 
+          d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 
+             010 1.5H2.75A.75.75 0 012 4.75zm0 
+             10.5a.75.75 0 01.75-.75h7.5a.75.75 0 
+             010 1.5h-7.5a.75.75 0 
+             01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 
+             010 1.5H2.75A.75.75 0 012 10z"></path>
+  </svg>
 </button>
 
 <!-- Sidebar -->
-<aside id="default-sidebar" [class.translate-x-0]="isSidebarOpen" [class.-translate-x-full]="!isSidebarOpen" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-        <!-- Contenido del menú lateral -->
-        <ul class="space-y-2">
+<aside id="default-sidebar"
+  [class.translate-x-0]="isSidebarOpen"
+  [class.-translate-x-full]="!isSidebarOpen"
+  class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
+  aria-label="Sidebar">
+  <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+    <ul class="space-y-2">
 
-             <!-- =================Dashboard========================= -->
-            <li>
-                <a (click)="toggleMenuDropdownDasboard()" class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
-                    <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M10 3.75a.75.75 0 01.75-.75h6.5a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-6.5a.75.75 0 01-.75-.75V3.75z"></path>
-                        <path fill-rule="evenodd" d="M4.5 4.75A.75.75 0 015.25 4h6.5a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-6.5a.75.75 0 01-.75-.75V4.75zM9 5.5h3.75a.75.75 0 010 1.5H9a.75.75 0 010-1.5z"></path>
-                    </svg>
-                    <span class="ml-3">Dashboard</span>
-                </a>
-            </li>        
-             
-            <!-- =================Gestión de productos========================= -->
-            <li>
-                <a (click)="toggleMenuDropdown()" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" 
-            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 20">
-                      <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 0v1H2a1 1 0 0 0-1 .923L.086 17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 1.994-2.153L17 5.923ZM7 9a1 1 0 0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 0v1H7V4Zm6 5a1 1 0 1 1-2 0V7h2v2Z"/>
-                   </svg>
-                   <span class="flex-1 ms-3 whitespace-nowrap">Gestión de productos</span>
-                </a>
-             </li>          
-            
+      <!-- =================Dashboard========================= -->
+      <li>
+        <a (click)="toggleMenuDropdownDasboard()" 
+           class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg 
+                  hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700 cursor-pointer">
+          <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400" 
+               fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 3.75a.75.75 0 01.75-.75h6.5a.75.75 0 
+                     010 1.5H10.75a.75.75 0 01-.75-.75z"></path>
+            <path fill-rule="evenodd" 
+                  d="M4.5 4.75A.75.75 0 015.25 4h6.5a.75.75 0 
+                     01.75.75v12.5a.75.75 0 01-.75.75h-6.5a.75.75 0 
+                     01-.75-.75V4.75z"></path>
+          </svg>
+          <span class="ml-3">Dashboard</span>
+        </a>
+      </li>        
 
+      <!-- =================Gestión de productos========================= -->
+      <li>
+        <a (click)="toggleMenuDropdown()" 
+           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white 
+                  hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer">
+          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 
+                     dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" 
+               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
+               fill="currentColor" viewBox="0 0 18 20">
+            <path d="M17 5.923A1 1 0 0 0 16 5h-3V4a4 4 0 1 0-8 
+                     0v1H2a1 1 0 0 0-1 .923L.086 
+                     17.846A2 2 0 0 0 2.08 20h13.84a2 2 0 0 0 
+                     1.994-2.153L17 5.923ZM7 9a1 1 0 
+                     0 1-2 0V7h2v2Zm0-5a2 2 0 1 1 4 
+                     0v1H7V4Zm6 5a1 1 0 1 1-2 
+                     0V7h2v2Z"/>
+          </svg>
+          <span class="flex-1 ms-3 whitespace-nowrap">Gestión de productos</span>
+        </a>
+      </li>          
 
-            <!-- =================Registro de ventas========================= -->
-             <li>
-                <a (click)="toggleMenuDropdownVentas()" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 18">
-                      <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z"/>
-                   </svg>
-                   <span class="flex-1 ms-3 whitespace-nowrap">Registro de ventas</span>
-                </a>
-             </li>     
-            
-            <!-- =================Reportes========================= -->
-             <li>
-                <a (click)="toggleMenuDropdownReportes()" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
-                      <path d="M6.737 11.061a2.961 2.961 0 0 1 .81-1.515l6.117-6.116A4.839 4.839 0 0 1 16 2.141V2a1.97 1.97 0 0 0-1.933-2H7v5a2 2 0 0 1-2 2H0v11a1.969 1.969 0 0 0 1.933 2h12.134A1.97 1.97 0 0 0 16 18v-3.093l-1.546 1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 2.947 0 0 1-1.85-.227 2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
-                      <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 0 0 0 .81-.694l1.74-1.74V15a2.96 2.96 0 0 1-2.933 2H2.5A.93.93 0 0 0 2 16.061V17H4.5v-.939c0-.413.206-.775.516-.979l2.355-1.324a1.004 1.004 0 0 0 .591.158Z"/>
-                   </svg>
-                   <span class="flex-1 ms-3 whitespace-nowrap">Reportes</span>
-                </a>
-             </li> 
+      <!-- =================Registro de ventas========================= -->
+      <li>
+        <a (click)="toggleMenuDropdownVentas()" 
+           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white 
+                  hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer">
+          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 
+                     dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" 
+               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
+               fill="currentColor" viewBox="0 0 20 18">
+            <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 
+                     6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 
+                     2Zm1 9h-1.264A6.957 6.957 0 0 1 15 
+                     15v2a2.97 2.97 0 0 1-.184 1H19a1 
+                     1 0 0 0 1-1v-1a5.006 5.006 0 0 
+                     0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 
+                     4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 
+                     5.006 0 0 0-5 5v2a1 1 0 0 0 1 
+                     1h11a1 1 0 0 0 1-1v-2a5.006 5.006 
+                     0 0 0-5-5Z"/>
+          </svg>
+          <span class="flex-1 ms-3 whitespace-nowrap">Registro de ventas</span>
+        </a>
+      </li>     
 
-                         
-            <!-- =================Reportes========================= -->
-            <li>
-               <a (click)="toggleMenuDropdownRegister()" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                  <!-- Nuevo Icono de Registrar Usuario -->
-                  <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                     <path d="M10 2a1 1 0 0 1 1 1v4h4a1 1 0 1 1 0 2h-4v4a1 1 0 1 1-2 0v-4H5a1 1 0 1 1 0-2h4V3a1 1 0 0 1 1-1z"/>
-                     <path fill-rule="evenodd" d="M10 0a10 10 0 1 1 0 20 10 10 0 0 1 0-20zm0 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16z" clip-rule="evenodd"/>
-                  </svg>
-                  <span class="flex-1 ms-3 whitespace-nowrap">Registrar Usuario</span>
-               </a>
-            </li>   
-            
-            
-             <!-- =======================Cerrar Sesión ======================= -->
+      <!-- =================Reportes========================= -->
+      <li>
+        <a (click)="toggleMenuDropdownReportes()" 
+           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white 
+                  hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer">
+          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 
+                     dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" 
+               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
+               fill="currentColor" viewBox="0 0 20 20">
+            <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 
+                     3.707A2.96 2.96 0 0 0 .13 5H5Z"/>
+            <path d="M6.737 11.061a2.961 2.961 0 0 1 
+                     .81-1.515l6.117-6.116A4.839 4.839 
+                     0 0 1 16 2.141V2a1.97 1.97 0 0 
+                     0-1.933-2H7v5a2 2 0 0 1-2 
+                     2H0v11a1.969 1.969 0 0 0 
+                     1.933 2h12.134A1.97 1.97 0 0 
+                     0 16 18v-3.093l-1.546 
+                     1.546c-.413.413-.94.695-1.513.81l-3.4.679a2.947 
+                     2.947 0 0 1-1.85-.227 
+                     2.96 2.96 0 0 1-1.635-3.257l.681-3.397Z"/>
+            <path d="M8.961 16a.93.93 0 0 0 .189-.019l3.4-.679a.961.961 
+                     0 0 0 .81-.694l1.74-1.74V15a2.96 
+                     2.96 0 0 1-2.933 2H2.5A.93.93 
+                     0 0 0 2 16.061V17H4.5v-.939c0-.413.206-.775.516-.979l2.355-1.324a1.004 
+                     1.004 0 0 0 .591.158Z"/>
+          </svg>
+          <span class="flex-1 ms-3 whitespace-nowrap">Reportes</span>
+        </a>
+      </li> 
 
-             <li>
-                <a (click)="logout()" href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                   <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16">
-                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"/>
-                   </svg>
-                   <span class="flex-1 ms-3 whitespace-nowrap"> Cerrar Sesión  </span>
-                </a>
-             </li>
-               
-        </ul>
-    </div>
+      <!-- =================Registrar Usuario========================= -->
+      <li>
+        <a (click)="toggleMenuDropdownRegister()" 
+           class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white 
+                  hover:bg-gray-100 dark:hover:bg-gray-700 group cursor-pointer">
+          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 
+                     dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" 
+               xmlns="http://www.w3.org/2000/svg" fill="currentColor" 
+               viewBox="0 0 20 20">
+            <path d="M10 2a1 1 0 0 1 1 1v4h4a1 1 0 1 1 0 
+                     2h-4v4a1 1 0 1 1-2 0v-4H5a1 1 0 
+                     1 1 0-2h4V3a1 1 0 0 1 1-1z"/>
+            <path fill-rule="evenodd" 
+                  d="M10 0a10 10 0 1 1 0 20 10 
+                     10 0 0 1 0-20zm0 18a8 8 0 1 
+                     0 0-16 8 8 0 0 0 0 16z" 
+                  clip-rule="evenodd"/>
+          </svg>
+          <span class="flex-1 ms-3 whitespace-nowrap">Registrar Usuario</span>
+        </a>
+      </li>   
+
+      <!-- =================Cerrar Sesión========================= -->
+      <li>
+        <button
+          (click)="logout()"
+          type="button"
+          class="flex items-center w-full text-left p-2 text-gray-900 rounded-lg 
+                 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group 
+                 cursor-pointer focus:outline-none"
+        >
+          <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 
+                     dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" 
+               aria-hidden="true" xmlns="http://www.w3.org/2000/svg" 
+               fill="none" viewBox="0 0 18 16">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 
+                     2v10a2 2 0 0 1-2 2h-3"/>
+          </svg>
+          <span class="flex-1 ms-3 whitespace-nowrap">Cerrar Sesión</span>
+        </button>
+      </li>
+
+    </ul>
+  </div>
 </aside>
 
-
-
+<!-- Contenedor de vistas -->
 <div class="p-4 sm:ml-64">
-    <!-- Solo muestra el componente de productos si showProducts es verdadero -->
-     <app-dashboard *ngIf="isDasboard"></app-dashboard>    
-    <app-products *ngIf="isMenuDropdownOpen"></app-products>
-    <app-ventas *ngIf="isventas"></app-ventas>
-    <app-reportes *ngIf="isReportes"></app-reportes>
-    <app-sign-up *ngIf="isRegister"></app-sign-up>
-    
+  <app-dashboard *ngIf="isDasboard"></app-dashboard>    
+  <app-products *ngIf="isMenuDropdownOpen"></app-products>
+  <app-ventas *ngIf="isventas"></app-ventas>
+  <app-reportes *ngIf="isReportes"></app-reportes>
+  <app-sign-up *ngIf="isRegister"></app-sign-up>
 </div>
-
-

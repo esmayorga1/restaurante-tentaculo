@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router'; // ✅ Para redirigir al login
-import { AuthService } from '../../../services/auth';
-import Swal from 'sweetalert2'; // ✅ Para mostrar confirmaciones elegantes
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
+// Servicios
+import { AuthService } from '../../../services/auth';
+
+// Componentes hijos
 import { Products } from '../../admin/products/products';
 import { Ventas } from '../../admin/ventas/ventas';
 import { Dashboard } from '../../admin/dashboard/dashboard';
@@ -65,6 +68,7 @@ export class Header {
 
   // =================== Cerrar Sesión ===================
   async logout() {
+    console.log('🧩 logout() ejecutado');
     try {
       const result = await Swal.fire({
         title: '¿Cerrar sesión?',
@@ -75,6 +79,7 @@ export class Header {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, cerrar sesión',
         cancelButtonText: 'Cancelar',
+        reverseButtons: true,
       });
 
       if (result.isConfirmed) {
@@ -90,16 +95,16 @@ export class Header {
           showConfirmButton: false,
         });
 
-        // 🔹 Limpia estados locales
+        // 🔹 Limpia estados y sidebar
         this.resetViews();
         this.isSidebarOpen = false;
 
         // 🔹 Redirige al login
-        this.router.navigate(['/iniciar-sesion']);
+        this.router.navigate(['/']);
       }
     } catch (error) {
-      console.error('Error al cerrar sesión:', error);
-      Swal.fire({
+      console.error('❌ Error al cerrar sesión:', error);
+      await Swal.fire({
         icon: 'error',
         title: 'Error',
         text: 'Hubo un problema al cerrar la sesión.',

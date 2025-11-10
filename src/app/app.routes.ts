@@ -7,18 +7,22 @@ import { Products } from './components/admin/products/products';
 import { Ventas } from './components/admin/ventas/ventas';
 import { Header } from './components/layaout/header/header';
 import { Reportes } from './components/admin/reportes/reportes';
+import { LoginGuard } from './guard/login-guard';
+
 
 
 
 export const routes: Routes = [
+    { path: '', component: SignIn, pathMatch: 'full' },
     { path: 'iniciar-sesion', component: SignIn, pathMatch: 'full' },
-    { path: 'registrarme', component: SignUp, pathMatch: 'full' },
     { path: 'recuperar-password', component: ForgotPassword, pathMatch: 'full' },
-    { path: 'admin', component: Dashboard},
-    { path: 'a', component: Products},
-    {path: 'as', component: Ventas},
-    {path: 'a', component: Dashboard},
-    {path: '', component: Header},
-    {path: '', component: Reportes}
-    // "recuperar-password"
+    { path: 'admin', component: Header, canActivate: [LoginGuard]}    
+    
+    // { path: 'a', component: Products},
+    // {path: 'ventas', component: Ventas},
+    // {path: '', component: Dashboard},
+    // {path: 'a', component: Header},
+    // {path: 'a', component: Reportes},
+    // { path: 'as', component: SignIn, pathMatch: 'full' },
+  
 ];

@@ -3,91 +3,72 @@
   <div class="container mx-auto py-12">
     <!-- Título principal del Dashboard -->
     <div class="text-center mb-10">
-      <h1 class="text-4xl font-semibold text-gray-800">Restaurante Tentaculo</h1>
+      <h1 class="text-4xl font-semibold text-gray-800">Restaurante Tentáculo</h1>
       <p class="text-lg text-gray-600">Visión general de los productos y ventas</p>
     </div>
 
     <!-- Tarjetas de información -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
+
       <!-- Total de productos registrados -->
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
         <h3 class="text-xl font-medium text-gray-700">Total Productos Registrados</h3>
-        <div class="mt-4 text-4xl font-semibold text-indigo-600">{{ totalProducts }}</div>
+        <div class="mt-4 text-4xl font-semibold text-indigo-600">{{ totalProducts || 0 }}</div>
       </div>
-      
+
       <!-- Productos con stock menor a 10 unidades -->
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
         <h3 class="text-xl font-medium text-gray-700">Productos con Stock Bajo</h3>
-        <div class="mt-4 text-4xl font-semibold text-red-500">{{ lowStockProducts }}</div>
+        <div class="mt-4 text-4xl font-semibold text-red-500">{{ lowStockProducts || 0 }}</div>
       </div>
 
+      <!-- Lista de productos con stock bajo -->
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">    
         <h3 class="text-xl font-medium text-gray-700">Lista de Productos con Stock Bajo</h3>
         <ul class="mt-4 text-sm text-gray-700">
+          <li *ngIf="lowStockProductsList?.length === 0" class="text-gray-400 italic">
+            No hay productos con stock bajo.
+          </li>
           <li *ngFor="let product of lowStockProductsList" class="flex justify-between py-2">
-            <span>{{ product.data.name }}</span>
-            <!-- <span class="font-semibold text-indigo-600">{{ product.sales }}</span> -->
+            <span>{{ product?.name || product?.data?.name || 'Producto sin nombre' }}</span>
+            <span class="text-gray-500">{{ product?.stockQuantity ?? 0 }}</span>
           </li>
         </ul>
       </div>
-      
+
       <!-- 5 productos más vendidos -->
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
         <h3 class="text-xl font-medium text-gray-700">5 Productos Más Vendidos</h3>
         <ul class="mt-4 text-sm text-gray-700">
+          <li *ngIf="top5Products?.length === 0" class="text-gray-400 italic">
+            No hay datos de ventas disponibles.
+          </li>
           <li *ngFor="let product of top5Products" class="flex justify-between py-2">
-            <span>{{ product.name }}</span>
-            <span class="font-semibold text-indigo-600">{{ product.sales }}</span>
+            <span>{{ product?.name || 'Producto desconocido' }}</span>
+            <span class="font-semibold text-indigo-600">{{ product?.sales ?? 0 }}</span>
           </li>
         </ul>
       </div>
 
-      <!-- Total de productos registrados -->
-
-    
+      <!-- 5 productos menos vendidos -->
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
-        <h3 class="text-xl font-medium text-gray-700">5 Productos Menos vendidos</h3>
+        <h3 class="text-xl font-medium text-gray-700">5 Productos Menos Vendidos</h3>
         <ul class="mt-4 text-sm text-gray-700">
+          <li *ngIf="bottom5Products?.length === 0" class="text-gray-400 italic">
+            No hay datos de ventas disponibles.
+          </li>
           <li *ngFor="let product of bottom5Products" class="flex justify-between py-2">
-            <span>{{ product.name }}</span>
-            <span class="font-semibold text-indigo-600">{{ product.sales }}</span>
+            <span>{{ product?.name || 'Producto desconocido' }}</span>
+            <span class="font-semibold text-indigo-600">{{ product?.sales ?? 0 }}</span>
           </li>
         </ul>
       </div>
 
+      <!-- Total de ventas -->
       <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
         <h3 class="text-xl font-medium text-gray-700">Total Ventas Registradas</h3>
-        <div class="mt-4 text-4xl font-semibold text-indigo-600">{{ totalVentas }}</div>
+        <div class="mt-4 text-4xl font-semibold text-indigo-600">{{ totalVentas || 0 }}</div>
+      </div>
     </div>
-        
-  
-
-      <!-- 5 productos más vendidos -->
-
-
-
-
-
-
-
-
-
-
-    </div>
-
-    <!-- Sección de gráficos o más datos -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
   </div>
 </section>
-
-
